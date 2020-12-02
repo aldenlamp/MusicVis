@@ -15,15 +15,48 @@
 namespace visualizer {
 
 void MusicVisController::setup() {
-  ref = ci::audio::Voice::create(ci::audio::load(ci::app::loadResource(FLUME_AMBER)));
+
+  auto ctx = ci::audio::Context::master();
+
+  // create a SourceFile and set its output samplerate to match the Context.
+  ci::audio::SourceFileRef sourceFile = ci::audio::load(loadResource(FLUME_AMBER), ctx->getSampleRate());
+
+  // load the entire sound file into a BufferRef, and construct a BufferPlayerNode with this.
+
+  ci::audio::BufferRef buffer = sourceFile->loadBuffer();
+
+  auto node = ci::audio::BufferPlayerNode(buffer);
+  mBufferPlayerNode = ctx->makeNode(node);
+
+  std::cout << "Frames per Block: " << mBufferPlayerNode->getFramesPerBlock() << std::endl;
+  std::cout << "Num Frames: " << mBufferPlayerNode->getNumFrames() << std::endl;
+  std::cout << "Sample Rate: " << mBufferPlayerNode->getSampleRate() << std::endl;
+  std::cout << "Num Channels: " << mBufferPlayerNode->getNumChannels() << std::endl;
+  std::cout << "Buffer Size: " << mBufferPlayerNode->getBuffer()->getSize() << std::endl;
+//  auto channel = mBufferPlayerNode->getBuffer()->getChannel(0);
+//  std::cout << channel.size() << std::endl;
+
+
+  // connect and enable the Context
+  mBufferPlayerNode >> ctx->getOutput();
+  ctx->enable();
+
+  mBufferPlayerNode->start();
+
+
+//  ref = ci::audio::Voice::create(ci::audio::load(ci::app::loadResource(FLUME_AMBER)));
 //  ci::audio::VoiceRef ref = ci::audio::Voice::create(ci::audio::load(ci::app::loadResource(FLUME_AMBER)));
 //  ref->start();
 //  ref->setVolume(1);
-  ref->start();
+//  ref->start();
 
 }
 
 void MusicVisController::draw() {
+  auto channel = mBufferPlayerNode->getBuffer()->getChannel(1);
+  std::cout << "Pos: " << mBufferPlayerNode->getReadPosition();
+  std::cout << "\tBufferVal: " << mBufferPlayerNode->getBuffer()->getData()[mBufferPlayerNode->getReadPosition()];
+  std::cout << "\tChannelVal: " << channel[mBufferPlayerNode->getReadPosition()] << std::endl;
 
 }
 
