@@ -16,7 +16,7 @@ using std::vector;
 class Board {
 
 public:
-  Board(vec2 dimensions);
+  Board(vec2 board_dimensions, vec2 board_size);
 
   void SetPixel(size_t x, size_t y, Color color);
 
@@ -31,11 +31,12 @@ public:
   // For testing purposes only
   const vector<vector<Color>> GetBoard() const;
 
+  vec2 GetPixelDimensions() const;
+
 private:
-  vec2 display_size_;
-  vec2 board_dimensions;
-  vec2 pixel_dimensions;
-  vector<vector<Color>> board;
+  vec2 board_dimensions_;
+  vec2 pixel_dimensions_;
+  vector<vector<Color>> board_;
 
 };
 
