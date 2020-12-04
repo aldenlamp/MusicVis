@@ -7,7 +7,7 @@
 
 #include "cinder/gl/gl.h"
 
-namespace visualizer{
+namespace visualizer {
 
 using glm::vec2;
 using ci::Color;
@@ -16,6 +16,8 @@ using std::vector;
 class Board {
 
 public:
+  Board();
+
   Board(vec2 board_dimensions, vec2 board_size);
 
   void SetPixel(size_t x, size_t y, Color color);
@@ -39,10 +41,6 @@ private:
   vector<vector<Color>> board_;
 
 };
-
-
 }
-
-
 
 #endif //FINAL_PROJECT_BOARD_H
