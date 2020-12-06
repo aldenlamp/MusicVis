@@ -37,6 +37,7 @@ void Board::FillBoard(const vector<vector<Color>> &board) {
   for (size_t x = 0; x < board_dimensions_[0]; x++) {
     for (size_t y = 0; y < board_dimensions_[1]; y++) {
       board_[x][y] = board.at(x).at(y);
+
     }
   }
 }
@@ -48,6 +49,7 @@ void Board::Resize(vec2 size) {
 }
 
 void Board::Draw() const {
+  ci::gl::clear(Color("white"));
   for (size_t col = 0; col < board_dimensions_[0]; col++) {
     for (size_t row = 0; row < board_dimensions_[1]; row++) {
       ci::gl::color(board_[col][row]);
