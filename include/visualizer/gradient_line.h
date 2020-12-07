@@ -15,7 +15,7 @@ using glm::vec2;
 using ci::Color;
 using std::vector;
 
-enum line_function {Line, Sine, Cosine, Square, Quad};
+enum line_function {Line, Sine, Cosine, Square, Quad, Sqrt};
 
 const double kFuncApproximationConst = 0.01;
 

@@ -54,6 +54,13 @@ Color GradientLine::GetColorAtPosition(double position) {
     return colors_[0];
   }
 
+  if (position > 1){
+    position = 1;
+  }
+  if (position < 0){
+    position = 0;
+  }
+
   SortColors();
 
   double pos = ScaledLineFunction(position);
@@ -114,6 +121,7 @@ double GradientLine::LineFunction(line_function func, double x) const {
     case Cosine: return cos(x);
     case Square: return x * x;
     case Quad: return x * x * x * x;
+    case Sqrt: return sqrt(x);
   }
 }
 
