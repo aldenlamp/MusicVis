@@ -36,6 +36,10 @@ void GradientLine::AddColor(Color color, double position) {
   color_positions_.push_back(position);
 }
 
+void GradientLine::ChangeColor(size_t index, Color color) {
+    colors_.at(index) = color;
+}
+
 void GradientLine::Step(double proportion) {
   for (size_t i = 0; i < color_positions_.size(); i++){
     color_positions_[i] += proportion;
@@ -48,6 +52,13 @@ void GradientLine::Step(double proportion) {
 Color GradientLine::GetColorAtPosition(double position) {
   if (colors_.size() == 1){
     return colors_[0];
+  }
+
+  if (position > 1){
+    position = 1;
+  }
+  if (position < 0){
+    position = 0;
   }
 
   SortColors();
@@ -99,7 +110,7 @@ Color GradientLine::GetColorAtPosition(double position) {
 double GradientLine::ScaledLineFunction(double x) const {
   double scaled_input = x * (function_domain_[1] - function_domain_[0]) + function_domain_[0];
   double output = LineFunction(function_, scaled_input);
-  double scaled_output = output / (function_range_[1] - function_range_[0]);
+  double scaled_output = (output - function_range_[0]) / (function_range_[1] - function_range_[0]);
   return scaled_output;
 }
 
@@ -110,6 +121,7 @@ double GradientLine::LineFunction(line_function func, double x) const {
     case Cosine: return cos(x);
     case Square: return x * x;
     case Quad: return x * x * x * x;
+    case Sqrt: return sqrt(x);
   }
 }
 
@@ -149,13 +161,6 @@ void GradientLine::SortColors() {
       color_positions_[smallest_index] = temp_color_pos;
     }
   }
-}
-
-void GradientLine::Print() const {
-  for (size_t i = 0; i < colors_.size(); i++){
-    std::cout << colors_[i] << ":" << color_positions_[i] << "\t"; //<< function_positions_[i] << "\t";
-  }
-  std::cout << std::endl;
 }
 
 }

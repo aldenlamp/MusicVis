@@ -15,7 +15,7 @@ using glm::vec2;
 using ci::Color;
 using std::vector;
 
-enum line_function {Line, Sine, Cosine, Square, Quad};
+enum line_function {Line, Sine, Cosine, Square, Quad, Sqrt};
 
 const double kFuncApproximationConst = 0.01;
 
@@ -30,6 +30,8 @@ public:
   GradientLine(const vector<Color> &colors, const vector<double> &positions, line_function function = Line, vec2 domain = vec2(0.0, 1.0));
 
   void AddColor(Color color, double position);
+
+  void ChangeColor(size_t index, Color color);
 
   void Step(double proportion);
 
