@@ -31,6 +31,8 @@ public:
 
   void AddColor(Color color, double position);
 
+  void ChangeColor(size_t index, Color color);
+
   void Step(double proportion);
 
   Color GetColorAtPosition(double position);
