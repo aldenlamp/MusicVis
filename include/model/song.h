@@ -75,7 +75,7 @@ private:
   void BlurBackward(vector<double> &bins);
 
   // Stores the last rows of bins for blurring
-  vector <vector<double>> last_bins_;
+  vector<vector<double>> last_bins_;
 
   // Audio node to play and analyze the song
   BufferPlayerNodeRef player_node_;
