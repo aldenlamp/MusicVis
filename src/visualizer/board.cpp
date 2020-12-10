@@ -59,8 +59,6 @@ void Board::Draw() const {
       ci::Rectf bounding_box(pixel_top_left, pixel_bottom_right);
 
       ci::gl::drawSolidRect(bounding_box);
-//      ci::gl::color(ci::Color("black"));
-//      ci::gl::drawStrokedRect(bounding_box);
     }
   }
 }

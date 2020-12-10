@@ -1,6 +1,4 @@
-Put your final project proposal here.
-
-I plan to build a music visualizer using c++ and cinder. It will be able to input a song, run a series of analysis on that song, and create a colorful visualization that plays alongside the song. As of now I plan to use the frequencies of the music and do a aesthetically pleasing realtime graph.
+I plan to build a music controller using c++ and cinder. It will be able to input a song, run a series of analysis on that song, and create a colorful visualization that plays alongside the song. As of now I plan to use the frequencies of the music and do a aesthetically pleasing realtime graph.
 
 I have been interested in music visualization for a long time as it has been a long time goal to make a music visualization for LEDs similar to what is seen at concerts. I have created a very primitive version of this using python so I have a vision of how it could be done well in c++.
 

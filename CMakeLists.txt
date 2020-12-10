@@ -56,26 +56,34 @@ include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
 
 list(APPEND CORE_SOURCE_FILES src/controller/musicvis_controller.cpp)
-#list(APPEND CORE_SOURCE_FILES src/controller/song_processor.cpp)
-#list(APPEND CORE_SOURCE_FILES src/visualizer/visualizer.cpp)
-#list(APPEND CORE_SOURCE_FILES src/model/song.cpp)
+list(APPEND CORE_SOURCE_FILES src/visualizer/board.cpp)
+list(APPEND CORE_SOURCE_FILES src/visualizer/gradient_line.cpp)
+list(APPEND CORE_SOURCE_FILES src/model/song.cpp)
 
+list(APPEND TEST_FILES tests/test_board.cpp)
+list(APPEND TEST_FILES tests/test_gradients.cpp)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES})
 
+list(APPEND RESOURCE_FILES ${APP_PATH}/data/Flume-Amber.wav)
+list(APPEND RESOURCE_FILES ${APP_PATH}/data/FLWOGB.wav)
+list(APPEND RESOURCE_FILES ${APP_PATH}/data/TimeAlone.wav)
+list(APPEND RESOURCE_FILES ${APP_PATH}/data/Borderline.wav)
+list(APPEND RESOURCE_FILES ${APP_PATH}/data/Nangs.wav)
+
 
 ci_make_app(
-        APP_NAME        visualizer
+        APP_NAME        music_vis
         CINDER_PATH     ${CINDER_PATH}
         SOURCES         apps/cinder_app_main.cpp ${SOURCE_FILES}
-        RESOURCES       ${APP_PATH}/data/Flume-Amber.wav
+        RESOURCES       ${RESOURCE_FILES}
         INCLUDES        include
 )
 
 ci_make_app(
-        APP_NAME        ideal-gas-test
+        APP_NAME        music_vis_test
         CINDER_PATH     ${CINDER_PATH}
-        SOURCES         tests/test_main.cpp ${SOURCE_FILES} ${TEST_FILES}
+        SOURCES         ${SOURCE_FILES} ${TEST_FILES}
         INCLUDES        include
         LIBRARIES       catch2
 )
