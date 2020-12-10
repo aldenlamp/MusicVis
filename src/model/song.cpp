@@ -23,9 +23,6 @@ Song::Song(size_t bins, song_names name, size_t fft_size, size_t window_size, ve
     case Nangs:
       resource = ci::app::loadResource(NANGS);
       break;
-    case Fkj:
-      resource = ci::app::loadResource(FKJ);
-      break;
     default:
       break;
   }

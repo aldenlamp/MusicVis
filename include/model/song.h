@@ -22,7 +22,7 @@ using std::vector;
 using glm::vec2;
 
 enum song_names {
-  Amber, FeelsLike, TimeAloneWith, Borderline, Nangs, Fkj
+  Amber, FeelsLike, TimeAloneWith, Borderline, Nangs
 };
 
 // Frames to use for blurring

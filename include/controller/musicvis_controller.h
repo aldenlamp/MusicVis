@@ -41,7 +41,6 @@ using musicvis_model::song_names::FeelsLike;
 using musicvis_model::song_names::TimeAloneWith;
 using musicvis_model::song_names::Borderline;
 using musicvis_model::song_names::Nangs;
-using musicvis_model::song_names::Fkj;
 
 // The song to use
 const song_names kSongName = Amber;

@@ -16,8 +16,6 @@ void MusicVisController::setup() {
       sensitivity_ *= 2;
     case Nangs:
       sensitivity_ *= 2;
-    case Fkj:
-      sensitivity_ *= 5;
     default:
       break;
   }

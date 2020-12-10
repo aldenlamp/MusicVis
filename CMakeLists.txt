@@ -70,7 +70,6 @@ list(APPEND RESOURCE_FILES ${APP_PATH}/data/FLWOGB.wav)
 list(APPEND RESOURCE_FILES ${APP_PATH}/data/TimeAlone.wav)
 list(APPEND RESOURCE_FILES ${APP_PATH}/data/Borderline.wav)
 list(APPEND RESOURCE_FILES ${APP_PATH}/data/Nangs.wav)
-list(APPEND RESOURCE_FILES ${APP_PATH}/data/FKJ.wav)
 
 
 ci_make_app(
