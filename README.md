@@ -1,11 +1,8 @@
-Fill this in before the final project deadline. Someone who has _no familiarity_ with your project should be able to read this and understand:
-* what your project does
-* how to set it up and run it
-
-
-#MusicVis
+# MusicVis
 
 ### A music visualization project
+
+![alt tag](https://github.com/uiuc-fa20-cs126/final-project-aldenlamp/blob/main/docs/demo_img.png)
 
 ## What it does
 
