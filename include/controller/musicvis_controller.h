@@ -12,8 +12,8 @@
 #include "cinder/gl/gl.h"
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGL.h"
-#include "cinder/app/App.h"
 #include "cinder/audio/audio.h"
+#include "cinder/audio/Source.h"
 
 namespace controller {
 
@@ -43,25 +43,52 @@ using musicvis_model::song_names::Borderline;
 using musicvis_model::song_names::Nangs;
 using musicvis_model::song_names::Fkj;
 
-const vec2 kBoardDimensions(128, 7);
+// The song to use
 const song_names kSongName = Amber;
 
+// Dimensions for the visualizer
+const vec2 kBoardDimensions(128, 7);
+
+// Percent volume needed to change colors
 const double kVolumeThreshold = 0.4;
+
+// Amount of frames needed between color changes
 const size_t kColorChangeFrameLimit = 10;
+
+// Percent to shift the gradient when changing colors
 const double kColorChangeStep = 0.073;
+
+// Gradient evaluation function to use
 const line_function kGradientFunction = Sqrt;
 
 class MusicVisController : public ::ci::app::App {
 
 public:
+  /**
+   * Sets up the MusicVisController
+   */
   void setup() override;
 
+  /**
+   * Draws the board with Cinder
+   */
   void draw() override;
 
+  /**
+   * Updates the board from the song analysis
+   */
   void update() override;
 
+  /**
+   * Resizes the board
+   */
   void resize() override;
 
+  /**
+   * Handles inputs
+   * these inlcude space to pause and play, r to reset, and the arrow keys to adjust sensitivity
+   * @param event the key event to be processed
+   */
   void keyDown(ci::app::KeyEvent event) override;
 
 private:
@@ -70,7 +97,7 @@ private:
 
   Board board_;
 
-  GradientLine test_gradient_;
+  GradientLine gradient_;
   size_t count_since_color_change_;
 
   size_t sensitivity_ = 10;
