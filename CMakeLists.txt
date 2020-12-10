@@ -84,7 +84,7 @@ ci_make_app(
 ci_make_app(
         APP_NAME        music_vis_test
         CINDER_PATH     ${CINDER_PATH}
-        SOURCES         tests/test_main.cpp ${SOURCE_FILES} ${TEST_FILES}
+        SOURCES         ${SOURCE_FILES} ${TEST_FILES}
         INCLUDES        include
         LIBRARIES       catch2
 )
